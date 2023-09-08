@@ -66,4 +66,7 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinVersion")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinVersion")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+
+    //LeakCanary
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
