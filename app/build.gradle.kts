@@ -21,7 +21,7 @@ android {
     }
 
     lint {
-        baseline = file("lint-baseline.xml")
+        baseline = file("lint-baseline-new.xml")
     }
 
     buildTypes {
