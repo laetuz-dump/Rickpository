@@ -8,16 +8,20 @@ apply(from = "../shared_dependencies.gradle")
 
 android {
     namespace = "com.neotica.rickandmorty"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.neotica.rickandmorty"
         minSdk = 27
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lint {
+        baseline = file("lint-baseline.xml")
     }
 
     buildTypes {

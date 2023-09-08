@@ -6,7 +6,7 @@ apply(from = "../shared_dependencies.gradle")
 
 android {
     namespace = "com.neotica.favorite"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 27
