@@ -1,3 +1,6 @@
+import com.android.build.api.dsl.Lint
+import com.android.build.api.dsl.LintOptions
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -20,9 +23,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    lint {
+   /* lint {
         baseline = file("lint-baseline-new.xml")
-    }
+    }*/
 
     buildTypes {
         release {
