@@ -69,4 +69,8 @@ dependencies {
 
     //LeakCanary
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
+
+    //Security
+    implementation("net.zetetic:android-database-sqlcipher:4.4.0")
+    implementation("androidx.sqlite:sqlite-ktx:2.3.1")
 }
