@@ -1,4 +1,4 @@
-import com.android.build.api.dsl.Lint
+import com.android.build.gradle.internal.tasks.ExportConsumerProguardFilesTask
 
 plugins {
     id("com.android.application")
@@ -7,6 +7,11 @@ plugins {
     id ("kotlin-parcelize")
 }
 apply(from = "../shared_dependencies.gradle")
+
+tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
+    //dependsOn(":favorite:extractProGuardFiles")
+    mustRunAfter(":favorite:extractProguardFiles")
+}
 
 android {
     namespace = "com.neotica.rickandmorty"
