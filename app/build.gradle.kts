@@ -9,7 +9,6 @@ plugins {
 apply(from = "../shared_dependencies.gradle")
 
 tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
-    //dependsOn(":favorite:extractProGuardFiles")
     mustRunAfter(":favorite:extractProguardFiles")
 }
 
@@ -27,25 +26,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-   /* lint {
-        baseline = file("lint-baseline-new.xml")
-    }*/
-
     buildTypes {
-        /*release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }*/
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterUseCase {
     fun getAllCharacter(): Flow<Resource<List<Character>>>
     fun getFavoriteCharacter(): Flow<List<Character>>
-    fun setFavoriteCharacter(char: Character, state: Boolean)
+    suspend fun setFavoriteCharacter(char: Character, state: Boolean)
 }

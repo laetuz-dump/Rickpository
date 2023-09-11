@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.neotica.core.domain.model.Character
 import com.neotica.rickandmorty.R
 import com.neotica.rickandmorty.databinding.ActivityDetailCharacterBinding
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailCharacterActivity : AppCompatActivity() {
@@ -48,7 +50,9 @@ class DetailCharacterActivity : AppCompatActivity() {
             setStatusFavorite(statusFavorite)
             binding.fab.setOnClickListener {
                 statusFavorite = !statusFavorite
-                detailCharacterViewModel.setFavoriteCharacter(detailCharacter, statusFavorite)
+                lifecycleScope.launch {
+                    detailCharacterViewModel.setFavoriteCharacter(detailCharacter, statusFavorite)
+                }
                 setStatusFavorite(statusFavorite)
             }
         }

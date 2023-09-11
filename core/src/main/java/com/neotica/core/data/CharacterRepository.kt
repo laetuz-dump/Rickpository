@@ -6,7 +6,6 @@ import com.neotica.core.data.source.remote.network.ApiResponse
 import com.neotica.core.data.source.remote.response.CharacterResponse
 import com.neotica.core.domain.model.Character
 import com.neotica.core.domain.repository.ICharacterRepository
-import com.neotica.core.utils.AppExecutors
 import com.neotica.core.utils.DataMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -14,10 +13,9 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
-class CharacterRepository (
+class CharacterRepository(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ) : ICharacterRepository {
 
     override fun getAllCharacter(): Flow<Resource<List<Character>>> =
@@ -47,9 +45,12 @@ class CharacterRepository (
         return localDataSource.getFavoriteCharacter().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
-    override fun setFavoriteCharacter(character: Character, state: Boolean) {
+    override suspend fun setFavoriteCharacter(character: Character, state: Boolean) {
         val charEntity = DataMapper.mapDomainToEntity(character)
-        appExecutors.diskIO().execute { localDataSource.setFavoriteCharacter(charEntity, state) }
+        withContext(Dispatchers.IO){
+            localDataSource.setFavoriteCharacter(charEntity, state)
+        }
+        //appExecutors.diskIO().execute {  }
     }
 }
 

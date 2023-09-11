@@ -12,5 +12,5 @@ class CharacterInteractor(private val characterRepository: ICharacterRepository)
 
     override fun getFavoriteCharacter(): Flow<List<Character>> = characterRepository.getFavoriteCharacter()
 
-    override fun setFavoriteCharacter(char: Character, state: Boolean) = characterRepository.setFavoriteCharacter(char, state)
+    override suspend fun setFavoriteCharacter(char: Character, state: Boolean) = characterRepository.setFavoriteCharacter(char, state)
 }

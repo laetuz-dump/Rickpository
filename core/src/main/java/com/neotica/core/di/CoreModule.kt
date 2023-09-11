@@ -7,7 +7,6 @@ import com.neotica.core.data.source.local.room.CharacterDatabase
 import com.neotica.core.data.source.remote.RemoteDataSource
 import com.neotica.core.data.source.remote.network.ApiService
 import com.neotica.core.domain.repository.ICharacterRepository
-import com.neotica.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
@@ -67,6 +66,5 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<ICharacterRepository> { CharacterRepository(get(), get(), get()) }
+    single<ICharacterRepository> { CharacterRepository(get(), get()) }
 }
