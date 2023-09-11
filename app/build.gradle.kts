@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.Lint
-import com.android.build.api.dsl.LintOptions
 
 plugins {
     id("com.android.application")
@@ -29,7 +28,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

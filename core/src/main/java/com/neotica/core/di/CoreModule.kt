@@ -35,8 +35,9 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val logBody = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         val loggingInterceptor = if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            logBody
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
