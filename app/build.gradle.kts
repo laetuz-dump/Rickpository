@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.tasks.ExportConsumerProguardFilesTask
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -7,10 +5,6 @@ plugins {
     id ("kotlin-parcelize")
 }
 apply(from = "../shared_dependencies.gradle")
-
-tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
-    mustRunAfter(":favorite:exportReleaseConsumerProguardFiles")
-}
 
 android {
     namespace = "com.neotica.rickandmorty"
@@ -27,20 +21,6 @@ android {
     }
 
     buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -57,6 +37,4 @@ android {
 
 dependencies {
     implementation(project(":core"))
-   // debugImplementation(project(path= ":favorite", configuration = "debug"))
-   // releaseImplementation(project(path= ":favorite", configuration = "release"))
 }
