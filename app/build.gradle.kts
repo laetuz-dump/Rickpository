@@ -57,6 +57,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    debugImplementation(project(path= ":favorite", configuration = "debug"))
+   // debugImplementation(project(path= ":favorite", configuration = "debug"))
     releaseImplementation(project(path= ":favorite", configuration = "release"))
 }
