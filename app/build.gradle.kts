@@ -9,7 +9,7 @@ plugins {
 apply(from = "../shared_dependencies.gradle")
 
 tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
-    mustRunAfter(":favorite:extractProguardFiles")
+    mustRunAfter(":favorite:exportReleaseConsumerProguardFiles")
 }
 
 android {
