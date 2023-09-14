@@ -1,5 +1,3 @@
-import com.android.build.gradle.internal.tasks.ExportConsumerProguardFilesTask
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -8,9 +6,9 @@ plugins {
 }
 apply(from = "../shared_dependencies.gradle")
 
-tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
+/*tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
     mustRunAfter(":favorite:extractProguardFiles")
-}
+}*/
 
 android {
     namespace = "com.neotica.rickandmorty"
