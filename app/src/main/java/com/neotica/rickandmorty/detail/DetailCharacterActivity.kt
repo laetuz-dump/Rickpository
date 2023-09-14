@@ -3,7 +3,6 @@ package com.neotica.rickandmorty.detail
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -18,7 +17,6 @@ class DetailCharacterActivity : AppCompatActivity() {
     private val detailCharacterViewModel: DetailCharacterViewModel by viewModel()
     private lateinit var binding: ActivityDetailCharacterBinding
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailCharacterBinding.inflate(layoutInflater)
@@ -26,9 +24,12 @@ class DetailCharacterActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-
-        val detailCharacter = intent.getParcelableExtra(EXTRA_DATA, Character::class.java)
-        showDetailCharacter(detailCharacter)
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU){
+            val selectedData = intent.getParcelableExtra(EXTRA_DATA) as Character?
+            showDetailCharacter(selectedData)
+        }else{
+            val detailCharacter = intent.getParcelableExtra(EXTRA_DATA, Character::class.java)
+            showDetailCharacter(detailCharacter)}
     }
 
     @SuppressLint("SetTextI18n")
