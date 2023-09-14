@@ -1,8 +1,20 @@
+import com.android.build.gradle.internal.tasks.ExportConsumerProguardFilesTask
+
 plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
 }
-apply(from = "../shared_dependencies.gradle")
+//apply(from = "../shared_dependencies.gradle")
+
+/*tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
+    mustRunAfter(":favorite:extractProguardFiles")
+}*/
+
+/*tasks {
+    named<ExportConsumerProguardFilesTask>("exportReleaseConsumerProguardFiles") {
+        dependsOn("extractProguardFiles")
+    }
+}*/
 
 android {
     namespace = "com.neotica.favorite"
@@ -37,6 +49,19 @@ android {
 }
 
 dependencies {
+    apply(from = "../shared_dependencies.gradle")
     implementation(project(":app"))
     implementation(project(":core"))
 }
+
+
+
+
+
+/*tasks.named<ExportConsumerProguardFilesTask>("exportReleaseConsumerProguardFiles") {
+    dependsOn("extractProguardFiles")
+}*/
+/*
+tasks.register("exportReleaseConsumerProguardFiles"){
+    dependsOn("extractProguardFiles")
+}*/

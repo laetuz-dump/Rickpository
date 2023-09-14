@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.tasks.ExportConsumerProguardFilesTask
+
 plugins {
     id("com.android.application")
     kotlin("android")
