@@ -5,8 +5,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 //apply(from = "../shared_dependencies.gradle")
+/*tasks.named("exportReleaseConsumerProguardFiles"){
+    dependsOn(":favorite:extractProguardFiles")
+}
 
-/*tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
+tasks.register("exportReleaseConsumerProguardFiles", ExportConsumerProguardFilesTask::class){
     mustRunAfter(":favorite:extractProguardFiles")
 }*/
 
