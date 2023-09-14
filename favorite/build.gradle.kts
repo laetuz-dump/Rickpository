@@ -38,5 +38,5 @@ android {
 
 dependencies {
     implementation(project(":app"))
-    implementation(project(":core"))
+  //  implementation(project(":core"))
 }
